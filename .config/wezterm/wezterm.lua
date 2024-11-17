@@ -11,7 +11,7 @@ config = {
   window_close_confirmation = 'NeverPrompt',
   window_decorations = 'RESIZE',
   default_cursor_style = 'BlinkingBar',
-  color_scheme = 'Nord (Gogh)',
+  color_scheme = 'Catppuccin Mocha',
   font = wezterm.font('JetBrainsMono Nerd Font', { weight = 'Medium' }),
   font_size = 14,
   background = {
