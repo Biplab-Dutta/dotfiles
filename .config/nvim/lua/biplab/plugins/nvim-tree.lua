@@ -14,7 +14,7 @@ return {
         relativenumber = false,
         side = 'right',
       },
-      -- change folder arrow icons
+
       renderer = {
         indent_markers = {
           enable = true,
@@ -27,11 +27,12 @@ return {
             },
             git = {
               staged = 'A',
-              unmerged = 'M',
+              unstaged = 'M',
+              unmerged = '!',
               renamed = 'R',
-              untracked = '?',
+              untracked = 'U',
               deleted = 'D',
-              ignored = '!',
+              ignored = '◌',
             },
           },
         },
@@ -61,6 +62,7 @@ return {
         },
       },
       filters = {
+        dotfiles = true,
         custom = { '.DS_Store' },
       },
       git = {
