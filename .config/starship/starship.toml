@@ -1,4 +1,5 @@
 format = """
+$os\
 $directory\
 $git_branch\
 $git_status\
@@ -38,11 +39,57 @@ base = "#1e1e2e"
 mantle = "#181825"
 crust = "#11111b"
 
+[os]
+format = "[$symbol]($style)"
+disabled = false
+
+[os.symbols]
+Alpine = " "
+Amazon = " "
+Android = " "
+Arch = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "﯑ "
+Gentoo = " "
+HardenedBSD = "ﲊ "
+Illumos = " "
+Linux = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+OpenBSD = " "
+openSUSE = " "
+OracleLinux = " "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+Redox = " "
+Solus = "ﴱ "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Windows = " "
+
+[username]
+show_always = true
+style_user = "bg:fg:white"
+style_root = "bg:fg:white"
+format = '[$user]($style) [](fg:second bg:third) '
+
 [directory]
 style = 'bold fg:dark_blue'
 format = '[$path ]($style)'
-truncation_length = 3
-truncation_symbol = '…/'
 truncate_to_repo = false
 
 [directory.substitutions]
