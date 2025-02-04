@@ -104,6 +104,27 @@ return {
           },
         }
       end,
+      ['gopls'] = function()
+        lspconfig['gopls'].setup {
+          capabilities = capabilities,
+          cmd = { 'gopls' },
+          fileTypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
+          settings = {
+            gopls = {
+              completeUnimported = true,
+              usePlaceholders = true,
+              analyses = {
+                unusedparams = true,
+              },
+            },
+          },
+        }
+      end,
+      ['clangd'] = function()
+        lspconfig['clangd'].setup {
+          fileTypes = { 'c', 'cpp' },
+        }
+      end,
     }
   end,
 }
