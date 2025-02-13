@@ -13,6 +13,7 @@ return {
     'nvim-telescope/telescope-ui-select.nvim',
     'nvim-tree/nvim-web-devicons',
     'folke/todo-comments.nvim',
+    'nvim-telescope/telescope-frecency.nvim',
   },
   config = function()
     local telescope = require 'telescope'
@@ -71,6 +72,7 @@ return {
 
     pcall(require('telescope').load_extension, 'fzf')
     pcall(require('telescope').load_extension, 'ui-select')
+    pcall(require('telescope').load_extension, 'frecency')
 
     vim.keymap.set('n', '<leader>ft', '<cmd>TodoTelescope<cr>', { desc = 'Find todos' })
     vim.keymap.set('n', '<leader>?', builtin.oldfiles, { desc = '[?] Find recently opened files' })
