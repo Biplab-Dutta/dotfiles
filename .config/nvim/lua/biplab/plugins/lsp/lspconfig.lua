@@ -5,8 +5,12 @@ return {
     'hrsh7th/cmp-nvim-lsp',
     { 'antosha417/nvim-lsp-file-operations', config = true },
     { 'folke/neodev.nvim', opts = {} },
+    { 'j-hui/fidget.nvim', opts = {} },
+    { 'robertbrunhage/dart-tools.nvim' },
   },
   config = function()
+    require('fidget').setup {}
+    require 'dart-tools'
     -- import lspconfig plugin
     local lspconfig = require 'lspconfig'
 
@@ -125,6 +129,34 @@ return {
           fileTypes = { 'c', 'cpp' },
         }
       end,
+      require('lspconfig').dartls.setup {
+        capabilities = capabilities,
+        cmd = {
+          vim.fn.exepath 'dart',
+          'language-server',
+          '--protocol=lsp',
+        },
+        filetypes = { 'dart' },
+        init_options = {
+          onlyAnalyzeProjectsWithOpenFiles = false,
+          suggestFromUnimportedLibraries = true,
+          closingLabels = true,
+          outline = false,
+          flutterOutline = false,
+        },
+        settings = {
+          dart = {
+            analysesExcludedFolders = {
+              vim.fn.expand '$HOME/.pub-cache/',
+              vim.fn.expand '/opt/homebrew/',
+              vim.fn.expand '$HOME/development/flutter/',
+            },
+            updateImportsOnRename = true,
+            completeFunctionCalls = true,
+            showTodos = true,
+          },
+        },
+      },
     }
   end,
 }
