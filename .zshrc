@@ -19,6 +19,9 @@ export JAVA_HOME=/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home
 # Flutter pub cache
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 
+# Export Flutter path
+export PATH=$HOME/development/flutter/bin:$PATH
+
 # Aliases
 alias cat="bat"
 
@@ -78,3 +81,5 @@ eval "$(zoxide init zsh)"
 alias cd="z"
 
 alias ff="fastfetch"
+
+alias n="nvim"
