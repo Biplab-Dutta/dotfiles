@@ -4,7 +4,6 @@ return {
   build = ':TSUpdate',
   dependencies = {
     'windwp/nvim-ts-autotag',
-    'nvim-treesitter/nvim-treesitter-textobjects',
   },
   config = function()
     local treesitter = require 'nvim-treesitter.configs'
@@ -36,6 +35,7 @@ return {
         'go',
         'c',
         'cpp',
+        'dart',
       },
       incremental_selection = {
         enable = true,
