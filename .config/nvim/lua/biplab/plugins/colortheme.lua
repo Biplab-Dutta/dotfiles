@@ -6,12 +6,12 @@ return {
   config = function()
     require('catppuccin').setup {
       flavour = 'mocha',
-      transparent_background = true,
+      transparent_background = false,
     }
 
     vim.cmd [[colorscheme catppuccin]]
 
-    local bg_transparent = true
+    local bg_transparent = false
 
     local toggle_transparency = function()
       bg_transparent = not bg_transparent
