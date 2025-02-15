@@ -14,6 +14,12 @@ config = {
   color_scheme = 'Catppuccin Mocha',
   font = wezterm.font('JetBrainsMono Nerd Font', { weight = 'Medium' }),
   font_size = 14,
+  window_padding = {
+    left = 0,
+    right = 0,
+    top = 0,
+    bottom = 0,
+  },
   background = {
     {
       source = {
