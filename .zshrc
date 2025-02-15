@@ -83,3 +83,5 @@ alias cd="z"
 alias ff="fastfetch"
 
 alias n="nvim"
+
+alias xx="tmux"
