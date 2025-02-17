@@ -25,8 +25,8 @@ return {
           local icons = {
             error = ' ',
             warning = ' ',
-            info = ' ',
-            hint = '',
+            info = ' ',
+            hint = ' ',
           }
           return icons[level] .. count
         end,
