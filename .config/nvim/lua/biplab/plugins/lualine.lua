@@ -2,49 +2,6 @@
 return {
   'nvim-lualine/lualine.nvim',
   config = function()
-    -- Adapted from: https://github.com/nvim-lualine/lualine.nvim/blob/master/lua/lualine/themes/onedark.lua
-    local colors = {
-      blue = '#61afef',
-      green = '#98c379',
-      purple = '#c678dd',
-      cyan = '#56b6c2',
-      red1 = '#e06c75',
-      red2 = '#be5046',
-      yellow = '#e5c07b',
-      fg = '#abb2bf',
-      bg = '#282c34',
-      gray1 = '#828997',
-      gray2 = '#2c323c',
-      gray3 = '#3e4452',
-    }
-
-    local onedark_theme = {
-      normal = {
-        a = { fg = colors.bg, bg = colors.green, gui = 'bold' },
-        b = { fg = colors.fg, bg = colors.gray3 },
-        c = { fg = colors.fg, bg = colors.gray2 },
-      },
-      command = { a = { fg = colors.bg, bg = colors.yellow, gui = 'bold' } },
-      insert = { a = { fg = colors.bg, bg = colors.blue, gui = 'bold' } },
-      visual = { a = { fg = colors.bg, bg = colors.purple, gui = 'bold' } },
-      terminal = { a = { fg = colors.bg, bg = colors.cyan, gui = 'bold' } },
-      replace = { a = { fg = colors.bg, bg = colors.red1, gui = 'bold' } },
-      inactive = {
-        a = { fg = colors.gray1, bg = colors.bg, gui = 'bold' },
-        b = { fg = colors.gray1, bg = colors.bg },
-        c = { fg = colors.gray1, bg = colors.gray2 },
-      },
-    }
-
-    -- Import color theme based on environment variable NVIM_THEME
-    local env_var_nvim_theme = os.getenv 'NVIM_THEME' -- or 'nord'
-
-    -- Define a table of themes
-    local themes = {
-      onedark = onedark_theme,
-      nord = 'nord',
-    }
-
     local mode = {
       'mode',
       fmt = function(str)
@@ -80,11 +37,46 @@ return {
       symbols = { added = ' ', modified = ' ', removed = ' ' }, -- changes diff symbols
       cond = hide_in_width,
     }
+    local function is_flutter_project()
+      local cwd = vim.fn.getcwd() -- Get the current working directory
+      return vim.fn.filereadable(cwd .. '/pubspec.yaml') == 1 -- Check if pubspec.yaml exists
+    end
+
+    -- Custom function to get the attached Android device or emulator
+    local function get_attached_device()
+      -- If it's not a Flutter project, return an empty string
+      if not is_flutter_project() then
+        return ''
+      end
+
+      local handle = io.popen 'adb devices -l'
+      if handle == nil then
+        return '' -- Return empty if adb command failed
+      end
+
+      local result = handle:read '*a'
+      handle:close()
+
+      -- Check if result is not empty
+      if result and result ~= '' then
+        -- Extract the model name from the adb output and stop before the word "device"
+        for line in result:gmatch '[^\r\n]+' do
+          -- Match the model: field and capture everything before the word 'device'
+          local model = line:match 'model:([%w%s_%-]+) device'
+          if model then
+            -- Replace underscores with spaces for a cleaner output
+            model = model:gsub('_', ' ')
+            return '📱' .. model -- Return the mobile icon followed by the formatted model name
+          end
+        end
+      end
+      return 'No device connected'
+    end
 
     require('lualine').setup {
       options = {
         icons_enabled = true,
-        theme = themes[env_var_nvim_theme], -- Set theme based on environment variable
+        theme = 'catppuccin',
         -- Some useful glyphs:
         -- https://www.nerdfonts.com/cheat-sheet
         --        
@@ -97,7 +89,13 @@ return {
         lualine_a = { mode },
         lualine_b = { 'branch' },
         lualine_c = { filename },
-        lualine_x = { diagnostics, diff, { 'encoding', cond = hide_in_width }, { 'filetype', cond = hide_in_width } },
+        lualine_x = {
+          diagnostics,
+          diff,
+          { 'encoding', cond = hide_in_width },
+          { 'filetype', cond = hide_in_width },
+          { get_attached_device, cond = hide_in_width },
+        },
         lualine_y = { 'location' },
         lualine_z = { 'progress' },
       },
