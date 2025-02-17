@@ -1,11 +1,10 @@
--- Set lualine as statusline
 return {
   'nvim-lualine/lualine.nvim',
+  dependencies = { 'biplab-dutta/nvim-android-device' },
   config = function()
     local mode = {
       'mode',
       fmt = function(str)
-        -- return ' ' .. str:sub(1, 1) -- displays only the first character of the mode
         return ' ' .. str
       end,
     }
@@ -34,44 +33,11 @@ return {
     local diff = {
       'diff',
       colored = false,
-      symbols = { added = ' ', modified = ' ', removed = ' ' }, -- changes diff symbols
+      symbols = { added = ' ', modified = ' ', removed = ' ' },
       cond = hide_in_width,
     }
-    local function is_flutter_project()
-      local cwd = vim.fn.getcwd() -- Get the current working directory
-      return vim.fn.filereadable(cwd .. '/pubspec.yaml') == 1 -- Check if pubspec.yaml exists
-    end
 
-    -- Custom function to get the attached Android device or emulator
-    local function get_attached_device()
-      -- If it's not a Flutter project, return an empty string
-      if not is_flutter_project() then
-        return ''
-      end
-
-      local handle = io.popen 'adb devices -l'
-      if handle == nil then
-        return '' -- Return empty if adb command failed
-      end
-
-      local result = handle:read '*a'
-      handle:close()
-
-      -- Check if result is not empty
-      if result and result ~= '' then
-        -- Extract the model name from the adb output and stop before the word "device"
-        for line in result:gmatch '[^\r\n]+' do
-          -- Match the model: field and capture everything before the word 'device'
-          local model = line:match 'model:([%w%s_%-]+) device'
-          if model then
-            -- Replace underscores with spaces for a cleaner output
-            model = model:gsub('_', ' ')
-            return '📱' .. model -- Return the mobile icon followed by the formatted model name
-          end
-        end
-      end
-      return 'No device connected'
-    end
+    local device = require 'nvim_android_device'
 
     require('lualine').setup {
       options = {
@@ -94,7 +60,7 @@ return {
           diff,
           { 'encoding', cond = hide_in_width },
           { 'filetype', cond = hide_in_width },
-          { get_attached_device, cond = hide_in_width },
+          { device.android_model, cond = hide_in_width },
         },
         lualine_y = { 'location' },
         lualine_z = { 'progress' },
