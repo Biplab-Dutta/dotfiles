@@ -86,6 +86,10 @@ alias n="nvim"
 
 alias xx="tmux"
 
+export PATH="$HOME/.tmux/plugins/tmuxifier/bin:$PATH"
+
+eval "$(tmuxifier init -)"
+
 function flutter-watch(){
   tmux send-keys "flutter run $1 $2 $3 $4 --pid-file=/tmp/tf1.pid" Enter \;\
   split-window -v \;\
