@@ -1,0 +1,134 @@
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'terryma/vim-multiple-cursors'
+
+set termguicolors
+
+let mapleader = ' '
+
+" Disable the spacebar key's default behavior in Normal and Visual modules
+nnoremap <Space> <Nop>
+vnoremap <Space> <Nop>
+
+set relativenumber 
+
+inoremap kj <ESC>
+
+" map black hole register
+noremap \ "_
+
+" paste over without overwriting default register
+xnoremap p P
+
+set fileencoding = 'utf-8'
+set autoindent 
+
+" save undo history
+set undofile
+
+" sync Vim clipboard with OS clipboard
+set clipboard^=unnamed,unnamedplus
+
+" jump between angle brackets < >
+set matchpairs+=<:>
+
+" smart line joining
+set ideajoin
+
+" highlight search results
+set hlsearch
+
+" case-insensitive search
+set ignorecase
+
+" enable case-sensitive search when uppercased letter is present
+set smartcase
+
+" search text while typing
+set incsearch
+
+" save file
+nnoremap <C-s> :w<CR>
+inoremap <C-s> <Esc>:w<CR>a
+
+" quit file
+nnoremap <leader>x :q<CR>
+
+" vertical split
+map <leader>v <Action>(SplitVertically)
+
+" horizontal split
+map <leader>h <Action>(SplitHorizontally)
+
+" unsplit
+map <leader>us <Action>(Unsplit)
+
+" unsplit all
+map <leader>ua <Action>(UnsplitAll)
+
+" go to the left split
+map <C-h> <C-w>h
+
+" go to the right split
+map <C-l> <C-w>l
+
+" go to the top split
+map <C-k> <C-w>k
+
+" go to the bottom split
+map <C-j> <C-w>j
+
+" global search window with classes tab active
+map <leader>fc <Action>(GotoClass)
+
+" global search window with files tab active
+map <leader>ff <Action>(GotoFile)
+
+" global search window with symbols tab active
+map <leader>fs <Action>(GotoSymbol)
+
+" global search window with actions tab active
+map <leader>fa <Action>(GotoAction)
+
+map <leader>gi <Action>(GotoImplementation)
+map <leader>gt <Action>(GotoTest)
+map <leader>gm <Action>(GotoSuperMethod)
+map <leader>ug <Action>(FindUsages)
+map <S-k> <Action>(ShowHoverInfo)
+map <leader>qgd <Action>(QuickTypeDefinition)
+map <leader>qim <Action>(QuickImplementations)
+map <leader>oo <Action>(FileStructurePopup)
+map <leader>sw <Action>(Find)
+map <leader>sr <Action>(Replace)
+map <leader>sW <Action>(FindInPath)
+map <leader>sR <Action>(ReplaceInPath)
+
+map <leader>rn <Action>(RenameElement)
+map <leader>rv <Action>(IntroduceVariable)
+map <leader>rr <Action>(Refactorings.QuickListPopupAction)
+map <leader>ca <Action>(ShowIntentionActions)
+map <leader>sw <Action>(SurroundWith)
+map <leader>gn <Action>(Generate)
+map <C-[> <Action>(EditorCompleteStatement)
+map <leader>en <Action>(GotoNextError)
+map <leader>ep <Action>(GotoPreviousError)
+map <leader>lc <Action>(JumpToLastChange)
+map <leader>fmt <Action>(ReformatCode)
+map <leader>oi <Action>(OptimizeImports)
+map <leader>ra <Action>(RearrangeCode)
+map <leader>yap <Action>(CopyAbsolutePath)
+map <leader>yrp <Action>(CopyContentRootPath)
+map <leader>yfn <Action>(CopyFileName)
+map <C-;> <Action>(RecentFiles)
+map <Tab> <Action>(NextTab)
+map <S-Tab> <Action>(PreviousTab)
+map <A-j> <Action>(MoveLineDown)
+map <A-k> <Action>(MoveLineUp)
+
+" Key mappings for vim-multiple-cursors
+nmap <C-n> <Plug>NextWholeOccurrence
+xmap <C-n> <Plug>NextWholeOccurrence
+nmap g<C-n> <Plug>NextOccurrence
+xmap g<C-n> <Plug>NextOccurrence
+xmap <C-x> <Plug>SkipOccurrence
+xmap <C-p> <Plug>RemoveOccurrence
