@@ -114,7 +114,7 @@ return {
         },
         settings = {
           dart = {
-            analysesExcludedFolders = {
+            analysisExcludedFolders = {
               vim.fn.expand '$HOME/.pub-cache/',
               vim.fn.expand '/opt/homebrew/',
               vim.fn.expand '$HOME/development/flutter/',
