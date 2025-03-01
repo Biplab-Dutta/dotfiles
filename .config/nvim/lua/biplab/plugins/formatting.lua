@@ -8,6 +8,7 @@ return {
       formatters_by_ft = {
         lua = { 'stylua' },
         go = { 'gofmt' },
+        json = { 'prettier' },
       },
       format_on_save = {
         lsp_fallback = true,
