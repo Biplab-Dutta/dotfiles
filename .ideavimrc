@@ -41,6 +41,9 @@ set ideajoin
 " highlight search results
 set hlsearch
 
+" remove search highlight when pressed Esc key
+noremap <Esc> :nohlsearch<cr>
+
 " case-insensitive search
 set ignorecase
 
