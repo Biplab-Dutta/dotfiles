@@ -23,6 +23,9 @@ xnoremap p P
 set fileencoding = 'utf-8'
 set autoindent 
 
+"time to wait for a mapped sequence to complete (in milliseconds)
+set timeoutlen = 300 
+
 " save undo history
 set undofile
 
@@ -90,6 +93,9 @@ map <leader>fs <Action>(GotoSymbol)
 " global search window with actions tab active
 map <leader>fa <Action>(GotoAction)
 
+" global search window with texts tab active
+map <leader>ft <Action>(GotoText)
+
 map <leader>gi <Action>(GotoImplementation)
 map <leader>gt <Action>(GotoTest)
 map <leader>gm <Action>(GotoSuperMethod)
@@ -124,6 +130,15 @@ map <Tab> <Action>(NextTab)
 map <S-Tab> <Action>(PreviousTab)
 map <A-j> <Action>(MoveLineDown)
 map <A-k> <Action>(MoveLineUp)
+
+nnoremap <Leader>tt :action ActivateTerminalToolWindow<CR>
+nnoremap <Leader>ee :action ActivateProjectToolWindow<CR>
+nnoremap <Leader>wq :action HideActiveWindow<CR>
+
+" run and debug
+nnoremap <Leader>r :action Run<CR>
+"nnoremap <Leader>d :action Debug<CR>
+"nnoremap <Leader>s :action Stop<CR>
 
 " Key mappings for vim-multiple-cursors
 nmap <C-n> <Plug>NextWholeOccurrence
