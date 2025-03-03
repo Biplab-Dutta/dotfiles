@@ -11,6 +11,7 @@ return {
       layout = {
         default_direction = 'left',
       },
+      show_guides = true,
     }
     vim.keymap.set('n', '<leader>a', '<cmd>AerialToggle<CR>')
   end,
