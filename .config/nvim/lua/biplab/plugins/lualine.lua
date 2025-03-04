@@ -24,7 +24,7 @@ return {
       sources = { 'nvim_diagnostic' },
       sections = { 'error', 'warn' },
       symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
-      colored = false,
+      colored = true,
       update_in_insert = false,
       always_visible = false,
       cond = hide_in_width,
@@ -32,7 +32,7 @@ return {
 
     local diff = {
       'diff',
-      colored = false,
+      colored = true,
       symbols = { added = ' ', modified = ' ', removed = ' ' },
       cond = hide_in_width,
     }
@@ -74,7 +74,6 @@ return {
         lualine_z = {},
       },
       tabline = {},
-      extensions = { 'fugitive' },
     }
   end,
 }
