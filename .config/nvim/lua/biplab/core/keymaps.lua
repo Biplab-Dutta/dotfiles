@@ -17,6 +17,9 @@ vim.keymap.set({ 'n', 'i' }, '<leader>sn', '<cmd>noautocmd w <CR>', opts)
 -- Quit file
 vim.keymap.set('n', '<C-q>', '<cmd> q <CR>', opts)
 
+-- Remove hlsearch highlight on Esc
+vim.keymap.set('n', '<Esc>', '<cmd> nohlsearch <CR>', opts)
+
 -- Delete single character without copying into register
 vim.keymap.set('n', 'x', '"_x', opts)
 
