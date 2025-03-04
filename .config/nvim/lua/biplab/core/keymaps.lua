@@ -24,7 +24,7 @@ vim.keymap.set('n', '<Esc>', '<cmd> nohlsearch <CR>', opts)
 vim.keymap.set('n', 'x', '"_x', opts)
 
 -- map black hole register
-vim.keymap.set({ 'n', 'v' }, '\\', '"_', { noremap = true, silent = true })
+vim.keymap.set({ 'n', 'v' }, '\\', '"_', opts)
 
 -- Vertical scroll and center
 vim.keymap.set('n', '<C-d>', '<C-d>zz', opts)
