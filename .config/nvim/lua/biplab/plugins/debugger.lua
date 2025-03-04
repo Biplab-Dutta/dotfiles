@@ -92,9 +92,11 @@ return {
       },
     }
 
+    vim.api.nvim_set_hl(0, 'DapBreakpointColor', { fg = '#E51400' })
+    vim.fn.sign_define('DapBreakpoint', { text = '●', texthl = 'DapBreakpointColor', linehl = '', numhl = '' })
+
     -- Toggle to see last session result. Without this, we can't see session output in case of unhandled exception.
     vim.keymap.set('n', '<F7>', dapui.toggle, { desc = 'Debug: See last session result.' })
-
     dap.listeners.after.event_initialized['dapui_config'] = dapui.open
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
     dap.listeners.before.event_exited['dapui_config'] = dapui.close
