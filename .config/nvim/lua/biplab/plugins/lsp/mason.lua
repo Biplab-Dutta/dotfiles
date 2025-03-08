@@ -33,10 +33,7 @@ return {
     }
 
     mason_tool_installer.setup {
-      ensure_installed = {
-        'prettier',
-        'stylua',
-      },
+      ensure_installed = {},
     }
   end,
 }
