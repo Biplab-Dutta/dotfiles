@@ -14,7 +14,7 @@ ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
-export JAVA_HOME=/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home
+# export JAVA_HOME=/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home
 
 # Flutter pub cache
 export PATH="$PATH":"$HOME/.pub-cache/bin"
