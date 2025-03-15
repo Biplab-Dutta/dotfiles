@@ -1,5 +1,6 @@
 return {
   'stevearc/conform.nvim',
+  lazy = true,
   event = { 'BufReadPre', 'BufNewFile' },
   config = function()
     local conform = require 'conform'
@@ -7,7 +8,7 @@ return {
     conform.setup {
       formatters_by_ft = {
         lua = { 'stylua' },
-        go = { 'gofmt' },
+        go = { 'gofumpt', 'goimports-reviser', 'golines' },
         json = { 'prettier' },
       },
       format_on_save = {
