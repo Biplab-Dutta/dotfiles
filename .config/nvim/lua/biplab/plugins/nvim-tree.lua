@@ -37,24 +37,6 @@ return {
           },
         },
       },
-      -- on_attach = function(bufnr)
-      --   local api = require 'nvim-tree.api'
-      --
-      --   -- Use the default mappings
-      --   api.config.mappings.default_on_attach(bufnr)
-      --
-      --   -- Add spacebar mapping for opening files/folders
-      --   vim.keymap.set('n', '<space>', api.node.open.edit, {
-      --     buffer = bufnr,
-      --     noremap = true,
-      --     silent = true,
-      --     desc = 'Open file or folder',
-      --   })
-      -- end,
-
-      -- disable window_picker for
-      -- explorer to work well with
-      -- window splits
       actions = {
         open_file = {
           window_picker = {
@@ -71,8 +53,7 @@ return {
       },
     }
 
-    -- set keymaps
-    local keymap = vim.keymap -- for conciseness
+    local keymap = vim.keymap
 
     keymap.set('n', '<leader>ee', '<cmd>NvimTreeToggle<CR>', { desc = 'Toggle file explorer' }) -- toggle file explorer
     keymap.set('n', '<leader>ef', '<cmd>NvimTreeFindFileToggle<CR>', { desc = 'Toggle file explorer on current file' }) -- toggle file explorer on current file
