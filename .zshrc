@@ -97,3 +97,7 @@ function flutter-watch(){
   resize-pane -y 5 -t 1 \;\
   select-pane -t 0 \;
 }
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
