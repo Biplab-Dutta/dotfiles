@@ -2,6 +2,6 @@ return {
   'folke/snacks.nvim',
   event = 'VeryLazy',
   opts = {
-    input = {},
+    input = { enabled = true },
   },
 }
