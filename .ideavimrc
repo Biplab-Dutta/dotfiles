@@ -1,6 +1,11 @@
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'easymotion/vim-easymotion'
+Plug 'tommcdo/vim-exchange'
+Plug 'vim-scripts/ReplaceWithRegister'
+set mini-ai
+set functiontextobj
 
 set termguicolors
 
@@ -150,3 +155,9 @@ nmap g<C-n> <Plug>NextOccurrence
 xmap g<C-n> <Plug>NextOccurrence
 xmap <C-x> <Plug>SkipOccurrence
 xmap <C-p> <Plug>RemoveOccurrence
+
+map fs <Plug>(easymotion-s)
+
+nmap s <Plug>ReplaceWithRegisterOperator
+nmap ss <Plug>ReplaceWithRegisterLine
+xmap s  <Plug>ReplaceWithRegisterVisual
