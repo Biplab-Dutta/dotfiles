@@ -1,9 +1,9 @@
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'easymotion/vim-easymotion'
-Plug 'tommcdo/vim-exchange'
-Plug 'vim-scripts/ReplaceWithRegister'
+set surround
+set commentary 
+set multiple-cursors
+set easymotion
+set exchange
+set ReplaceWithRegister
 set mini-ai
 set functiontextobj
 
