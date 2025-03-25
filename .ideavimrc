@@ -160,4 +160,4 @@ map fs <Plug>(easymotion-s)
 
 nmap s <Plug>ReplaceWithRegisterOperator
 nmap ss <Plug>ReplaceWithRegisterLine
-xmap s  <Plug>ReplaceWithRegisterVisual
+xmap s <Plug>ReplaceWithRegisterVisual
