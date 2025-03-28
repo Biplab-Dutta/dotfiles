@@ -8,7 +8,7 @@ return {
     version = '1.*',
     opts = {
       keymap = {
-        preset = 'default',
+        preset = 'none',
         ['<C-k>'] = { 'select_prev', 'fallback' },
         ['<C-j>'] = { 'select_next', 'fallback' },
       },
@@ -62,38 +62,7 @@ return {
   {
     'xzbdmw/colorful-menu.nvim',
     config = function()
-      -- You don't need to set these options.
-      require('colorful-menu').setup {
-        ls = {
-          lua_ls = {
-            arguments_hl = '@comment',
-          },
-          gopls = {
-            align_type_to_right = true,
-            add_colon_before_type = false,
-            preserve_type_when_truncate = true,
-          },
-          clangd = {
-            extra_info_hl = '@comment',
-            align_type_to_right = true,
-            import_dot_hl = '@comment',
-            preserve_type_when_truncate = true,
-          },
-          zls = {
-            align_type_to_right = true,
-          },
-          roslyn = {
-            extra_info_hl = '@comment',
-          },
-          dartls = {
-            extra_info_hl = '@comment',
-          },
-          fallback = true,
-          fallback_extra_info_hl = '@comment',
-        },
-        fallback_highlight = '@variable',
-        max_width = 60,
-      }
+      require('colorful-menu').setup {}
     end,
   },
 }
