@@ -2,26 +2,28 @@ return {
   'neovim/nvim-lspconfig',
   event = { 'BufReadPre', 'BufNewFile' },
   dependencies = {
-    'hrsh7th/cmp-nvim-lsp',
     { 'antosha417/nvim-lsp-file-operations', config = true },
     { 'folke/neodev.nvim' },
     { 'j-hui/fidget.nvim' },
     { 'robertbrunhage/dart-tools.nvim' },
   },
   config = function()
-    require('fidget').setup {}
+    require('fidget').setup {
+      notification = {
+        window = {
+          winblend = 0,
+        },
+      },
+    }
     require 'dart-tools'
 
     local lspconfig = require 'lspconfig'
     local mason_lspconfig = require 'mason-lspconfig'
-    local cmp_nvim_lsp = require 'cmp_nvim_lsp'
     local keymap = vim.keymap
 
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('UserLspConfig', {}),
       callback = function(ev)
-        -- Buffer local mappings.
-        -- See `:help vim.lsp.*` for documentation on any of the below functions
         local opts = { buffer = ev.buf, silent = true }
 
         opts.desc = 'Show LSP references'
@@ -66,7 +68,8 @@ return {
     })
 
     -- used to enable autocompletion (assign to every lsp server config)
-    local capabilities = cmp_nvim_lsp.default_capabilities()
+    local native_capabilities = vim.lsp.protocol.make_client_capabilities()
+    local capabilities = require('blink.cmp').get_lsp_capabilities(native_capabilities)
 
     -- Change the Diagnostic symbols in the sign column (gutter)
     local signs = { Error = ' ', Warn = ' ', Hint = '󰠠 ', Info = ' ' }
