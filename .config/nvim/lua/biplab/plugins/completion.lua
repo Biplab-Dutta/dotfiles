@@ -17,6 +17,7 @@ return {
   },
   version = '1.*',
   opts = {
+    snippets = { preset = 'luasnip' },
     keymap = {
       preset = 'default',
       ['<C-k>'] = { 'select_prev', 'fallback' },
