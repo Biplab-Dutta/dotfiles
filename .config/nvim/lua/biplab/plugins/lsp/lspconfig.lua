@@ -19,6 +19,7 @@ return {
 
     vim.diagnostic.config {
       virtual_text = true,
+      virtual_lines = false,
       signs = true,
       underline = true,
       update_in_insert = true,
@@ -72,6 +73,13 @@ return {
 
         opts.desc = 'Restart LSP'
         keymap.set('n', '<leader>rs', ':LspRestart<CR>', opts) -- mapping to restart lsp if necessary
+
+        keymap.set('n', '<leader>tdd', function()
+          vim.diagnostic.config {
+            virtual_lines = not vim.diagnostic.config().virtual_lines,
+            virtual_text = not vim.diagnostic.config().virtual_text,
+          }
+        end, { desc = 'Toggle diagnostic virtual lines and virtual text' })
       end,
     })
 
