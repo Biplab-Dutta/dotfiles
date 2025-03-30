@@ -17,6 +17,14 @@ return {
     }
     require 'dart-tools'
 
+    vim.diagnostic.config {
+      virtual_text = true,
+      signs = true,
+      underline = true,
+      update_in_insert = true,
+      severity_sort = true,
+    }
+
     local lspconfig = require 'lspconfig'
     local mason_lspconfig = require 'mason-lspconfig'
     local keymap = vim.keymap
