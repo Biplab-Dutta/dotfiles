@@ -4,7 +4,6 @@ return {
   config = function()
     local nvimtree = require 'nvim-tree'
 
-    -- recommended settings from nvim-tree documentation
     vim.g.loaded_netrw = 1
     vim.g.loaded_netrwPlugin = 1
 
@@ -14,7 +13,7 @@ return {
         relativenumber = true,
         side = 'right',
       },
-
+      sync_root_with_cwd = true,
       renderer = {
         indent_markers = {
           enable = true,
@@ -22,8 +21,8 @@ return {
         icons = {
           glyphs = {
             folder = {
-              arrow_closed = '›', -- arrow when folder is closed
-              arrow_open = '⌄', -- arrow when folder is open
+              arrow_closed = '›',
+              arrow_open = '⌄',
             },
             git = {
               staged = 'A',
