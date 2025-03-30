@@ -22,9 +22,6 @@ map({ 'n', 'i' }, '<leader>sn', '<cmd>noautocmd w <CR>', opts)
 
 map('n', '<C-i>', '<C-a>', map_options { desc = 'Increment numbers' })
 
-map('n', 'gn', 'm`o<Esc>``', map_options { desc = 'Insert new line below' })
-map('n', 'gN', 'm`O<Esc>``', map_options { desc = 'Insert new line above' })
-
 map('i', '<C-h>', '<Left>', { desc = 'move left' })
 map('i', '<C-l>', '<Right>', { desc = 'move right' })
 map('i', '<C-j>', '<Down>', { desc = 'move down' })
