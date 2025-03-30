@@ -8,11 +8,26 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 --For conciseness
 local opts = { noremap = true, silent = true }
 
+local function map_options(extra_opts)
+  return vim.tbl_extend('force', opts, extra_opts or {})
+end
+
 -- Save File
 vim.keymap.set({ 'n', 'i' }, '<C-s>', '<cmd> w <CR>', opts)
 
 -- Save file without auto-formatting
 vim.keymap.set({ 'n', 'i' }, '<leader>sn', '<cmd>noautocmd w <CR>', opts)
+
+vim.keymap.set('n', '<C-i>', '<C-a>', map_options { desc = 'Increment numbers' })
+
+vim.keymap.set('n', 'gn', 'm`o<Esc>``', map_options { desc = 'Insert new line below' })
+vim.keymap.set('n', 'gN', 'm`O<Esc>``', map_options { desc = 'Insert new line above' })
+
+vim.keymap.set('n', '<CR>', 'o<Esc>', map_options { desc = 'Go to new line below' })
+vim.keymap.set('n', '<S-CR>', '<S-o><Esc>', map_options { desc = 'Go to new line above' })
+
+vim.keymap.set({ 'n', 'v', 'o' }, 'B', '0', opts)
+vim.keymap.set({ 'n', 'v', 'o' }, 'E', '$', opts)
 
 -- Quit file
 vim.keymap.set('n', '<C-q>', '<cmd> q <CR>', opts)
