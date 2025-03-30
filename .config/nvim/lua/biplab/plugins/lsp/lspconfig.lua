@@ -145,6 +145,7 @@ return {
       },
 
       lspconfig.clangd.setup {
+        capabilities = capabilities,
         fileTypes = { 'c', 'cpp' },
       },
     }
