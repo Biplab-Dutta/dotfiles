@@ -62,14 +62,14 @@ map('n', '<Right>', ':vertical resize +2<CR>', opts)
 -- Buffers
 map('n', '<Tab>', ':bnext<CR>', opts)
 map('n', '<S-Tab>', ':bprevious<CR>', opts)
-map('n', '<leader>x', ':bdelete!<CR>', opts) -- close buffer
+map('n', '<leader>x', ':Bdelete<CR>', opts) -- close buffer
 map('n', '<leader>b', '<cmd> enew <CR>', opts) -- new buffer
 
 -- Window management
 map('n', '<leader>v', '<C-w>v', opts) -- split window vertically
 map('n', '<leader>h', '<C-w>s', opts) -- split window horizontally
 map('n', '<leader>se', '<C-w>=', opts) -- make split windows equal width & height
-map('n', '<leader>xs', ':close<CR>', opts) -- close current split window
+map('n', '<leader>sx', ':close<CR>', opts) -- close current split window
 
 -- Navigate between splits
 map('n', '<C-k>', ':wincmd k<CR>', opts)
