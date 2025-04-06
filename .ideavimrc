@@ -6,6 +6,7 @@ set exchange
 set ReplaceWithRegister
 set mini-ai
 set functiontextobj
+set highlightedyank 
 
 set termguicolors
 
