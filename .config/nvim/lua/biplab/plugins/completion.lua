@@ -69,6 +69,10 @@ return {
     appearance = { nerd_font_variant = 'mono' },
     sources = { default = { 'lsp', 'snippets', 'path', 'buffer' } },
     fuzzy = { implementation = 'prefer_rust_with_warning' },
+    enabled = function()
+      local disabled_filetypes = { 'NvimTree' }
+      return not vim.tbl_contains(disabled_filetypes, vim.bo.filetype)
+    end,
   },
   opts_extend = { 'sources.default' },
 }
