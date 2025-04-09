@@ -3,11 +3,11 @@ My dotfiles managed using [GNU Stow](https://www.gnu.org/software/stow).
 ## Screenshots
 
 ### Terminal ([Wezterm](https://wezterm.org/))
-![wezterm](https://github.com/user-attachments/assets/42233800-12b0-4c63-a989-e8bf21172a28)
+![wezterm](https://github.com/user-attachments/assets/32cc056b-7699-414a-a0ef-ee4e4c83fb6e)
 
 ### [Neovim](https://github.com/neovim/neovim)
 #### Welcome Page
-![welcome_screen_nvim](https://github.com/user-attachments/assets/782133f3-aa49-448a-9679-f792aa87b5ff)
+![welcome_screen_nvim](https://github.com/user-attachments/assets/47b9c3f9-8838-4260-848b-631dde23b007)
 
 #### Code Editing Interface
 ![nvim](https://github.com/user-attachments/assets/5164c893-2f30-4ec7-936e-847ca4b3aba5)
