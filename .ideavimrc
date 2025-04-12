@@ -97,6 +97,13 @@ inoremap <C-l> <Right>
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 
+nmap B 0
+vmap B 0
+omap B 0
+nmap E $
+vmap E $
+omap E $
+
 " global search window with classes tab active
 map <leader>fc <Action>(GotoClass)
 
