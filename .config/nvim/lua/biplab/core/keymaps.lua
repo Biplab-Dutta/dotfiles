@@ -30,8 +30,8 @@ map('i', '<C-k>', '<Up>', { desc = 'move up' })
 map('n', '<CR>', 'o<Esc>', map_options { desc = 'Go to new line below' })
 map('n', '<S-CR>', '<S-o><Esc>', map_options { desc = 'Go to new line above' })
 
-map({ 'n', 'v', 'o' }, 'B', '0', opts)
-map({ 'n', 'v', 'o' }, 'E', '^', opts)
+map({ 'n', 'v', 'o' }, 'B', '^', opts)
+map({ 'n', 'v', 'o' }, 'E', '$', opts)
 
 -- Quit file
 map('n', '<C-q>', '<cmd> q <CR>', opts)
