@@ -60,3 +60,9 @@ end
 
 vim.keymap.set('n', '<leader>zs', close_all_folds, { desc = '[s]hut all folds' })
 vim.keymap.set('n', '<leader>zo', open_all_folds, { desc = '[o]pen all folds' })
+
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
