@@ -27,7 +27,6 @@ return {
     }
 
     local lspconfig = require 'lspconfig'
-    local mason_lspconfig = require 'mason-lspconfig'
     local keymap = vim.keymap
 
     vim.api.nvim_create_autocmd('LspAttach', {
@@ -94,76 +93,67 @@ return {
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
     end
 
-    mason_lspconfig.setup_handlers {
-      -- default handler for installed servers
-      function(server_name)
-        lspconfig[server_name].setup {
-          capabilities = capabilities,
-        }
-      end,
-
-      lspconfig.lua_ls.setup {
-        capabilities = capabilities,
-        settings = {
-          Lua = {
-            diagnostics = {
-              disable = { 'missing-fields' },
-            },
-            completion = {
-              callSnippet = 'Replace',
-            },
+    lspconfig.lua_ls.setup {
+      capabilities = capabilities,
+      settings = {
+        Lua = {
+          diagnostics = {
+            disable = { 'missing-fields' },
+          },
+          completion = {
+            callSnippet = 'Replace',
           },
         },
       },
+    }
 
-      lspconfig.dartls.setup {
-        capabilities = capabilities,
-        cmd = {
-          vim.fn.exepath 'dart',
-          'language-server',
-          '--protocol=lsp',
+    lspconfig.dartls.setup {
+      capabilities = capabilities,
+      cmd = {
+        vim.fn.exepath 'dart',
+        'language-server',
+        '--protocol=lsp',
+      },
+      filetypes = { 'dart' },
+      init_options = {
+        onlyAnalyzeProjectsWithOpenFiles = true,
+        suggestFromUnimportedLibraries = true,
+        closingLabels = true,
+        outline = true,
+        flutterOutline = false,
+      },
+      settings = {
+        dart = {
+          analysisExcludedFolders = {
+            vim.fn.expand '$HOME/.pub-cache/',
+            vim.fn.expand '/opt/homebrew/',
+            vim.fn.expand '$HOME/development/flutter/',
+          },
+          updateImportsOnRename = true,
+          completeFunctionCalls = true,
+          showTodos = true,
         },
-        filetypes = { 'dart' },
-        init_options = {
-          onlyAnalyzeProjectsWithOpenFiles = true,
-          suggestFromUnimportedLibraries = true,
-          closingLabels = true,
-          outline = true,
-          flutterOutline = false,
-        },
-        settings = {
-          dart = {
-            analysisExcludedFolders = {
-              vim.fn.expand '$HOME/.pub-cache/',
-              vim.fn.expand '/opt/homebrew/',
-              vim.fn.expand '$HOME/development/flutter/',
-            },
-            updateImportsOnRename = true,
-            completeFunctionCalls = true,
-            showTodos = true,
+      },
+    }
+
+    lspconfig.gopls.setup {
+      capabilities = capabilities,
+      cmd = { 'gopls' },
+      fileTypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
+      settings = {
+        gopls = {
+          completeUnimported = true,
+          usePlaceholders = true,
+          analyses = {
+            unusedparams = true,
           },
         },
       },
+    }
 
-      lspconfig.gopls.setup {
-        capabilities = capabilities,
-        cmd = { 'gopls' },
-        fileTypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
-        settings = {
-          gopls = {
-            completeUnimported = true,
-            usePlaceholders = true,
-            analyses = {
-              unusedparams = true,
-            },
-          },
-        },
-      },
-
-      lspconfig.clangd.setup {
-        capabilities = capabilities,
-        fileTypes = { 'c', 'cpp' },
-      },
+    lspconfig.clangd.setup {
+      capabilities = capabilities,
+      fileTypes = { 'c', 'cpp' },
     }
   end,
 }
