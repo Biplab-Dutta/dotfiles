@@ -89,18 +89,10 @@ return {
       end,
     })
 
-    -- used to enable autocompletion (assign to every lsp server config)
     local native_capabilities = vim.lsp.protocol.make_client_capabilities()
     local capabilities = require('blink.cmp').get_lsp_capabilities(native_capabilities)
 
-    -- Change the Diagnostic symbols in the sign column (gutter)
-    local signs = { Error = ' ', Warn = ' ', Hint = '󰠠 ', Info = ' ' }
-    for type, icon in pairs(signs) do
-      local hl = 'DiagnosticSign' .. type
-      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
-    end
-
-    lspconfig.lua_ls.setup {
+    vim.lsp.config('lua_ls', {
       capabilities = capabilities,
       settings = {
         Lua = {
@@ -112,7 +104,7 @@ return {
           },
         },
       },
-    }
+    })
 
     lspconfig.dartls.setup {
       capabilities = capabilities,
@@ -143,7 +135,7 @@ return {
       },
     }
 
-    lspconfig.gopls.setup {
+    vim.lsp.config('gopls', {
       capabilities = capabilities,
       cmd = { 'gopls' },
       fileTypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
@@ -156,11 +148,11 @@ return {
           },
         },
       },
-    }
+    })
 
-    lspconfig.clangd.setup {
+    vim.lsp.config('clangd', {
       capabilities = capabilities,
       fileTypes = { 'c', 'cpp' },
-    }
+    })
   end,
 }
