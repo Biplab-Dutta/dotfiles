@@ -45,7 +45,7 @@ return {
         keymap.set('n', 'gR', '<cmd>FzfLua lsp_references<CR>', opts) -- show definition, references
 
         opts.desc = 'Go to declaration'
-        keymap.set('n', 'gD', vim.lsp.buf.declaration, opts) -- go to declaration
+        keymap.set('n', 'gD', '<cmd>FzfLua lsp_declarations<CR>', opts) -- go to declaration
 
         opts.desc = 'Show LSP definitions'
         keymap.set('n', 'gd', '<cmd>FzfLua lsp_definitions<CR>', opts) -- show lsp definitions
@@ -57,7 +57,7 @@ return {
         keymap.set('n', 'gt', '<cmd>FzfLua lsp_typedefs<CR>', opts) -- show lsp type definitions
 
         opts.desc = 'See available code actions'
-        keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
+        keymap.set({ 'n', 'v' }, '<leader>ca', '<cmd>FzfLua lsp_code_actions<CR>', opts) -- see available code actions, in visual mode will apply to selection
 
         opts.desc = 'Smart rename'
         keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts) -- smart rename
