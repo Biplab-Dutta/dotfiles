@@ -54,6 +54,7 @@ return {
         color_icons = true,
       },
     }
+    fzf.register_ui_select()
 
     local keymap = vim.keymap.set
 
