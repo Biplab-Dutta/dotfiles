@@ -10,6 +10,7 @@ return {
         lua = { 'stylua' },
         go = { 'gofumpt', 'goimports-reviser', 'golines' },
         json = { 'prettier' },
+        kotlin = { 'ktlint' },
       },
       format_on_save = {
         lsp_fallback = true,

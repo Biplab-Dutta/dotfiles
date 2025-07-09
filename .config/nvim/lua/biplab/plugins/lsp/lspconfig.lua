@@ -150,6 +150,12 @@ return {
       },
     })
 
+    vim.lsp.config('kotlin_lsp', {
+      capabilities = capabilities,
+      cmd = { 'kotlin-lsp', '--stdio' },
+      fileTypes = { 'kotlin' },
+    })
+
     vim.lsp.config('clangd', {
       capabilities = capabilities,
       fileTypes = { 'c', 'cpp' },

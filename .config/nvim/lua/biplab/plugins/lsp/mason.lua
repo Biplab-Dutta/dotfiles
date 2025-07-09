@@ -26,6 +26,7 @@ return {
         'clangd',
         'gopls',
         'yamlls',
+        'kotlin_lsp',
       },
     }
 
@@ -36,6 +37,7 @@ return {
         'gofumpt',
         'goimports-reviser',
         'golines',
+        'ktlint',
       },
     }
   end,
