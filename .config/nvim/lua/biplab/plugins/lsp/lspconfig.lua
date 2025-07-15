@@ -172,6 +172,7 @@ return {
     })
 
     vim.lsp.config('pyright', {
+      capabilities = capabilities,
       settings = {
         pyright = {
           disableOrganizeImports = true,
