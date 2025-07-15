@@ -6,6 +6,7 @@ $git_status\
 $fill\
 $dart\
 $python\
+$golang\
 $line_break\
 $character"""
 
@@ -129,6 +130,7 @@ symbol = ' '
 [golang]
 style = 'blue'
 symbol = ' '
+format = 'via [$symbol($version )]($style)'
 
 [rust]
 style = 'orange'
