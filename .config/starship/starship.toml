@@ -5,6 +5,7 @@ $git_branch\
 $git_status\
 $fill\
 $dart\
+$python\
 $line_break\
 $character"""
 
@@ -112,6 +113,14 @@ symbol = ' '
 
 [dart]
 symbol = " "
+
+[python]
+python_binary = 'python3'
+style = 'teal'
+symbol = ' '
+format = 'via [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+pyenv_version_name = false
+pyenv_prefix = ''
 
 [lua]
 format = '[$symbol($version )]($style)'
