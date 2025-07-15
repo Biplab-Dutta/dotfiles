@@ -27,6 +27,8 @@ return {
         'gopls',
         'yamlls',
         'kotlin_lsp',
+        'ruff',
+        'pyright',
       },
     }
 
