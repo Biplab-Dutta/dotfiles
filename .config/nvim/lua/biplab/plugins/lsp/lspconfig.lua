@@ -40,7 +40,7 @@ return {
         local opts = { buffer = ev.buf, silent = true }
 
         opts.desc = 'Show LSP references'
-        keymap.set('n', 'gR', '<cmd>FzfLua lsp_references<CR>', opts)
+        keymap.set('n', 'gr', '<cmd>FzfLua lsp_references<CR>', opts)
 
         opts.desc = 'Go to declaration'
         keymap.set('n', 'gD', '<cmd>FzfLua lsp_declarations<CR>', opts)
