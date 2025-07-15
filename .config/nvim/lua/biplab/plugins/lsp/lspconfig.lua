@@ -5,7 +5,6 @@ return {
     { 'antosha417/nvim-lsp-file-operations', config = true },
     { 'folke/neodev.nvim' },
     { 'j-hui/fidget.nvim' },
-    { 'robertbrunhage/dart-tools.nvim' },
   },
   config = function()
     require('fidget').setup {
@@ -15,7 +14,6 @@ return {
         },
       },
     }
-    require 'dart-tools'
 
     vim.diagnostic.config {
       virtual_text = true,
