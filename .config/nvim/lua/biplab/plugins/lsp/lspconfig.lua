@@ -31,7 +31,6 @@ return {
       severity_sort = true,
     }
 
-    local lspconfig = require 'lspconfig'
     local keymap = vim.keymap
 
     vim.api.nvim_create_autocmd('LspAttach', {
@@ -118,7 +117,7 @@ return {
       },
     })
 
-    lspconfig.dartls.setup {
+    vim.lsp.config('dartls', {
       capabilities = capabilities,
       cmd = {
         vim.fn.exepath 'dart',
@@ -145,7 +144,9 @@ return {
           showTodos = true,
         },
       },
-    }
+    })
+
+    vim.lsp.enable 'dartls'
 
     vim.lsp.config('gopls', {
       capabilities = capabilities,
