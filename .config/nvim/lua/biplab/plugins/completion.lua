@@ -23,6 +23,7 @@ return {
       ['<C-k>'] = { 'select_prev', 'fallback' },
       ['<C-j>'] = { 'select_next', 'fallback' },
       ['<CR>'] = { 'accept', 'fallback' },
+      ['<Tab>'] = { 'accept', 'fallback' },
     },
     completion = {
       accept = { auto_brackets = { enabled = true } },
