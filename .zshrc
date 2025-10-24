@@ -98,6 +98,39 @@ function flutter-watch(){
   select-pane -t 0 \;
 }
 
+# Vi mode
+bindkey -v
+export KEYTIMEOUT=1
+
+export EDITOR='nvim'
+autoload edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+
+export VI_MODE_SET_CURSOR=true
+
+function zle-keymap-select() {
+    if [[ ${KEYMAP} == vicmd ]]; then
+        echo -ne '\e[2 q'
+    else
+        echo -ne '\e[6 q'
+    fi
+}
+zle -N zle-keymap-select
+
+function zle-line-init() {
+    zle -K viins
+    echo -ne '\e[6 q'
+}
+zle -N zle-line-init
+
+function vi-yank-clipboard() {
+    zle vi-yank
+    echo "$CUTBUFFER" | pbcopy -i # pbcopy works in mac. For linux, maybe xclip works.
+}
+zle -N vi-yank-clipboard
+bindkey -M vicmd 'y' vi-yank-clipboard
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
