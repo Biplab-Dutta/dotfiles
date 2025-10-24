@@ -2,6 +2,7 @@ return {
   'ibhagwan/fzf-lua',
   dependencies = {
     'nvim-tree/nvim-web-devicons',
+    'ibhagwan/fzf-lua-frecency.nvim',
   },
   config = function()
     local fzf = require 'fzf-lua'
@@ -54,6 +55,7 @@ return {
         color_icons = true,
       },
     }
+
     fzf.register_ui_select()
 
     local keymap = vim.keymap.set
@@ -65,7 +67,12 @@ return {
     keymap('n', '<leader>gcf', fzf.git_bcommits, { desc = 'Search [G]it [C]ommits for current [F]ile' })
     keymap('n', '<leader>tgb', fzf.git_branches, { desc = 'Search [G]it [B]ranches' })
     keymap('n', '<leader>gs', fzf.git_status, { desc = 'Search [G]it [S]tatus (diff view)' })
-    keymap('n', '<leader>ff', fzf.files, { desc = '[S]earch [F]iles' })
+    keymap('n', '<leader>ff', function()
+      require('fzf-lua-frecency').frecency {
+        cwd_only = true,
+        display_score = false,
+      }
+    end, { desc = '[S]earch [F]iles with Frecency' })
     keymap('n', '<leader>sh', fzf.help_tags, { desc = '[S]earch [H]elp' })
     keymap('n', '<leader>scw', fzf.grep_cword, { desc = '[S]earch current [W]ord' })
     keymap('n', '<leader>lg', fzf.live_grep, { desc = '[S]earch by [G]rep' })
