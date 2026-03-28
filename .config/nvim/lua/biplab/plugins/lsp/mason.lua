@@ -27,7 +27,6 @@ return {
         'gopls',
         'yamlls',
         'kotlin_lsp',
-        'ruff',
         'pyright',
       },
     }
@@ -40,6 +39,7 @@ return {
         'goimports-reviser',
         'golines',
         'ktlint',
+        'ruff',
       },
     }
   end,
